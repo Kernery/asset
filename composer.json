@@ -1,0 +1,34 @@
+{
+    "name": "kernery/asset",
+    "description": "Asset dependency for kernery core which helps to keep environment assets tidy and accessible.",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kernery"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "kernery/core": "*@dev"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Kernery\\Asset\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kernery\\Asset\\Providers\\AssetServiceProvider"
+            ]
+        },
+        "aliases": {
+            "Asset": "Kernery\\Asset\\Facades\\AssetFacade"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

@@ -25,6 +25,19 @@ class AssetSupport
     {
         $buildVersion = $this->assetBuildVersion = $this->config['allow_assets_version'] ? '?v=' . $this->config['assets_version'] : '';
 
-        return $buildVersion;
+        // return $buildVersion;
+
+        dd( $this->assetBuildVersion );
+    }
+
+
+    /**
+     * Get all assets style and merge from source
+     */
+    public function getAssetStyle(array $appendStyles = [])
+    {
+        $this->styles = [...array_unique([...$this->styles, ...$appendStyles])];
+
+
     }
 }
