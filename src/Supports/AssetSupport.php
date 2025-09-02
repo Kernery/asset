@@ -2,7 +2,6 @@
 
 namespace Kernery\Asset\Supports;
 
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Config\Repository;
 
 class AssetSupport
@@ -14,9 +13,9 @@ class AssetSupport
 
     public function __construct(Repository $config)
     {
-        $this->config =   $config->get('asset');
-        $this->styles = $config->get('asset_styles');
-        $this->scripts = $config->get('asset_scripts');
+        $this->config =   $config->get('global');
+        // $this->styles = $config->get('asset_styles');
+        // $this->scripts = $config->get('asset_scripts');
     }
 
     /**
@@ -35,8 +34,6 @@ class AssetSupport
      */
     public function getAssetStyle(array $appendStyles = [])
     {
-        $this->styles = [...array_unique([...$this->styles, ...$appendStyles])];
-
-
+        //
     }
 }
