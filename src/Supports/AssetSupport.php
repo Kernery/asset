@@ -2,6 +2,7 @@
 
 namespace Kernery\Asset\Supports;
 
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Config\Repository;
 
 class AssetSupport
@@ -24,10 +25,8 @@ class AssetSupport
     public function getAssetBuildVersion(): string
     {
         $buildVersion = $this->assetBuildVersion = $this->config['allow_assets_version'] ? '?v=' . $this->config['assets_version'] : '';
-
-        // return $buildVersion;
-
-        dd( $this->assetBuildVersion );
+        
+        return $buildVersion;
     }
 
 
