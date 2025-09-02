@@ -16,7 +16,8 @@
     "require-dev": {},
     "autoload": {
         "psr-4": {
-            "Kernery\\Asset\\": "src"
+            "Kernery\\Asset\\": "src",
+            "Kernery\\Asset\\Test": "tests/"
         }
     },
     "extra": {
