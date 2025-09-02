@@ -10,7 +10,7 @@ class AssetSupport
     protected array $config = [];
     protected array $styles = [];
     protected array $scripts = [];
-    protected string $assetBuildVersion = "";
+    protected string $assetBuildVersion = '';
 
     public function __construct(Repository $config)
     {
