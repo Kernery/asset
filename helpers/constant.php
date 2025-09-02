@@ -11,7 +11,3 @@ if (!defined("ASSET_SCRIPTS_FOOTER")) {
 if (!defined("ASSET_STYLES_HEADER")) {
     define("ASSET_STYLES_HEADER", "asset_styles_header");
 }
-
-if (!defined("ASSET_STYLES_FOOTER")) {
-    define("ASSET_STYLES_FOOTER", "asset_styles_footer");
-}
