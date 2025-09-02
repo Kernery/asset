@@ -10,12 +10,17 @@ class AssetSupport
     protected array $styles = [];
     protected array $scripts = [];
     protected string $assetBuildVersion = '';
+    protected array $appendStylesTo = [];
+    protected array $appendScriptsTo = [
+        'header' => [],
+        'footer' => []
+    ];
 
     public function __construct(Repository $config)
     {
         $this->config =   $config->get('global');
-        $this->styles = $config->get('asset_styles');
-        $this->scripts = $config->get('asset_scripts');
+        $this->styles = $config->get('styles');
+        $this->scripts = $config->get('scripts');
     }
 
     /**
