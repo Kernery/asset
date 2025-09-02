@@ -14,8 +14,8 @@ class AssetSupport
     public function __construct(Repository $config)
     {
         $this->config =   $config->get('global');
-        // $this->styles = $config->get('asset_styles');
-        // $this->scripts = $config->get('asset_scripts');
+        $this->styles = $config->get('asset_styles');
+        $this->scripts = $config->get('asset_scripts');
     }
 
     /**
@@ -28,6 +28,31 @@ class AssetSupport
         return $buildVersion;
     }
 
+    /**
+     * Add assets script
+     */
+
+    public function addScript(array|string $assets): static
+    {
+        $assets = array_filter($assets);
+
+        $this->scripts = [...$this->scripts, ...$assets];
+
+        return $this;
+    }
+
+    /**
+     * Add assets style
+     */
+
+    public function addStyle(array|string $assets): static
+    {
+        $assets = array_filter($assets);
+
+        $this->styles = [...$this->styles, ...$assets];
+
+        return $this;
+    }
 
     /**
      * Get all assets style and merge from source
