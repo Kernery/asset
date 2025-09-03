@@ -32,7 +32,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring, pdo, pdo_sqlite
           coverage: none
-          - name: Setup GitHub Token for Composer
+      - name: Setup GitHub Token for Composer
         run: |
           composer config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies
