@@ -32,9 +32,14 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring, pdo, pdo_sqlite
           coverage: none
+          - name: Setup GitHub Token for Composer
+        run: |
+          composer config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" 
-          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+         composer config minimum-stability dev
+         composer config prefer-stable true
+         composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}"
+         composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
       - name: Execute tests
         run: ./vendor/bin/phpunit
