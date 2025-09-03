@@ -2,6 +2,7 @@
 
 namespace Kernery\Asset\Supports;
 
+use Arr;
 use Illuminate\Config\Repository;
 
 class AssetSupport
@@ -21,7 +22,9 @@ class AssetSupport
         'footer' => [],
     ];
 
-    public function __construct(Repository $config)
+    protected $assetBuilder;
+
+    public function __construct(Repository $config, AssetBuilder $assetBuilder)
     {
         $this->config = $config->get('global');
         // $this->styles = $config['styles'];
@@ -85,4 +88,35 @@ class AssetSupport
 
         return array_merge($styles, $this->appendStyles);
     }
+
+    public function getBuilder(): AssetBuilder
+    {
+        return $this->assetBuilder;
+    }
+
+    public function convertStyleToHtml(string $style): string
+    {
+        return $this->assetBuilder->convertStyleToHtml($style);
+    }
+
+    protected function makeItemHtml(string $name, string $type = ''): string
+    {
+        $type = 'style';
+        $html = '';
+        if (! in_array($type, ['style', 'script'])) {
+            return $html;
+        }
+        $name = 'resources.'.$type.'s.'.$name;
+
+        if (! Arr::has($this->config, $name)) {
+            return $html;
+        }
+
+        //We need to get source here
+
+        $html .= $this->assetBuilder->{$type}(['class' => 'hidden'])->toHtml();
+
+        return $html;
+
+    }    
 }
