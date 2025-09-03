@@ -36,7 +36,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "source/modules/asset",
+            "url": "../asset",
             "options": {
                 "symlink": true
             }
