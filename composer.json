@@ -17,7 +17,7 @@
     "autoload": {
         "psr-4": {
             "Kernery\\Asset\\": "src",
-            "Kernery\\Asset\\Test": "tests/"
+            "Kernery\\Asset\\Test\\": "tests/"
         }
     },
     "extra": {
@@ -31,15 +31,7 @@
         }
     },
     "config": {
-        "sort-packages": true
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../asset",
-            "options": {
-                "symlink": true
-            }
-        }
-    ]
+        "sort-packages": true,
+        "preferred-install": "dist"
+    }
 }
