@@ -15,4 +15,16 @@ class AssetTest extends TestCase
         ]);
         $this->assertSame('?v=12345', Asset::getAssetBuildVersion());
     }
+
+    public function test_that_it_appends_style_with_empty_object()
+    {
+
+        config()->set('global.styles', []);
+
+        $result = Asset::getStyle([
+            ['/css/app.css', '/css/theme.css'],
+        ]);
+
+        $this->assertSame([], $result);
+    }
 }

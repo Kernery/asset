@@ -24,8 +24,7 @@ class AssetSupport
     public function __construct(Repository $config)
     {
         $this->config = $config->get('global');
-        $this->styles = $config->get('styles');
-        $this->scripts = $config->get('scripts');
+        // $this->styles = $config['styles'];
     }
 
     /**
@@ -65,8 +64,25 @@ class AssetSupport
     /**
      * Get all assets style and merge from source
      */
-    public function getAssetStyle(array $appendStyles = [])
+    public function getStyle(array $appendStyles = []): array
     {
-        //
+        if (! empty($appendStyles)) {
+            $this->styles = array_merge($this->styles, ...$appendStyles);
+        }
+        $styles = [];
+
+        $this->styles = array_unique($this->styles);
+
+        return $styles;
+
+        foreach ($this->styles as $style) {
+
+            $name = 'resources.styles'.$style;
+
+            $styles = array_merge($styles, (array) $this->getStyle($name));
+
+        }
+
+        return array_merge($styles, $this->appendStyles);
     }
 }
