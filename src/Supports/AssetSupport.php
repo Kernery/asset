@@ -35,7 +35,7 @@ class AssetSupport
      */
     public function getAssetBuildVersion(): string
     {
-        $buildVersion = $this->assetBuildVersion = $this->config['allow_assets_version'] ? '?v='.$this->config['assets_version'] : '';
+        $buildVersion = $this->assetBuildVersion = $this->config['allow_assets_version'] ? '?v=' . $this->config['assets_version'] : '';
 
         return $buildVersion;
     }
@@ -43,7 +43,7 @@ class AssetSupport
     /**
      * Add assets script
      */
-    public function addScript(array|string $assets): static
+    public function addScript(array | string $assets): static
     {
         $assets = array_filter($assets);
 
@@ -55,7 +55,7 @@ class AssetSupport
     /**
      * Add assets style
      */
-    public function addStyle(array|string $assets): static
+    public function addStyle(array | string $assets): static
     {
         $assets = array_filter($assets);
 
@@ -80,7 +80,7 @@ class AssetSupport
 
         foreach ($this->styles as $style) {
 
-            $name = 'resources.styles'.$style;
+            $name = 'resources.styles' . $style;
 
             $styles = array_merge($styles, (array) $this->getStyle($name));
 
@@ -106,7 +106,7 @@ class AssetSupport
         if (! in_array($type, ['style', 'script'])) {
             return $html;
         }
-        $name = 'resources.'.$type.'s.'.$name;
+        $name = 'resources.' . $type . 's.' . $name;
 
         if (! Arr::has($this->config, $name)) {
             return $html;
@@ -128,16 +128,16 @@ class AssetSupport
         }
 
         if ($this->usingCDN($configName)) {
-            $src = Arr::get($this->config, $configName.'.src.cdn');
+            $src = Arr::get($this->config, $configName . '.src.cdn');
         }
 
-        $src = Arr::get($this->config, $configName.'.src.local');
+        $src = Arr::get($this->config, $configName . '.src.local');
 
         return $src;
     }
 
     protected function usingCDN($configName): bool
     {
-        return Arr::get($this->config, $configName.'.use_cdn', false) && ! $this->config['offline_asset'];
+        return Arr::get($this->config, $configName . '.use_cdn', false) && ! $this->config['offline_asset'];
     }
 }
