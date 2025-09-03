@@ -32,5 +32,14 @@
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "source/modules/asset",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
 }
