@@ -112,7 +112,7 @@ class AssetSupport
             return $html;
         }
 
-        //We need to get source here
+        // We need to get source here
         $src = $this->getSourceUrl($name);
 
         $html .= $this->assetBuilder->{$type}(['class' => 'hidden'])->toHtml();
@@ -123,22 +123,21 @@ class AssetSupport
 
     protected function getSourceUrl(string $configName): mixed
     {
-        if (!Arr::has($this->config, $configName)) {
+        if (! Arr::has($this->config, $configName)) {
             return '';
         }
 
         if ($this->usingCDN($configName)) {
-            $src = Arr::get($this->config, $configName . '.src.cdn');
+            $src = Arr::get($this->config, $configName.'.src.cdn');
         }
 
-
-        $src = Arr::get($this->config, $configName . '.src.local');
+        $src = Arr::get($this->config, $configName.'.src.local');
 
         return $src;
     }
-    
+
     protected function usingCDN($configName): bool
     {
-        return Arr::get($this->config, $configName . '.use_cdn', false) && !$this->config['offline_asset'];
+        return Arr::get($this->config, $configName.'.use_cdn', false) && ! $this->config['offline_asset'];
     }
 }
