@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'offline_assets' => env('OFFLINE_ASSETS', true),
+    'offline_asset' => env('OFFLINE_ASSET', true),
     'assets_version' => env('ASSETS_VERSION', time()),
-    'allow_assets_version' => env('ALLOW_ASSETS_VERSION', false),
+    'allow_asset_version' => env('ALLOW_ASSET_VERSION', false),
     'scripts' => [
         'tailwind.js',
     ],
