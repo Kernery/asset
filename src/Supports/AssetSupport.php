@@ -113,10 +113,22 @@ class AssetSupport
         }
 
         //We need to get source here
+        $src = $this->getSourceUrl($name);
 
         $html .= $this->assetBuilder->{$type}(['class' => 'hidden'])->toHtml();
 
         return $html;
 
-    }    
+    }
+
+    protected function getSourceUrl(string $configName)
+    {
+        if (!Arr::has($this->config, $configName)) {
+            return '';
+        }
+
+        $src = Arr::get($this->config, $configName . '.src.local');
+
+        return $src;
+    }
 }
