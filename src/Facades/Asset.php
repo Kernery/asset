@@ -3,7 +3,7 @@
 namespace Kernery\Asset\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Kernery\Asset\Supports\AssetSupport as AssetSupport;
+use Kernery\Asset\Supports\AssetSupport;
 
 class Asset extends Facade
 {

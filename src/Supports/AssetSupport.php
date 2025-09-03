@@ -7,18 +7,23 @@ use Illuminate\Config\Repository;
 class AssetSupport
 {
     protected array $config = [];
+
     protected array $styles = [];
+
     protected array $scripts = [];
+
     protected string $assetBuildVersion = '';
+
     protected array $appendStylesTo = [];
+
     protected array $appendScriptsTo = [
         'header' => [],
-        'footer' => []
+        'footer' => [],
     ];
 
     public function __construct(Repository $config)
     {
-        $this->config =   $config->get('global');
+        $this->config = $config->get('global');
         $this->styles = $config->get('styles');
         $this->scripts = $config->get('scripts');
     }
@@ -28,15 +33,14 @@ class AssetSupport
      */
     public function getAssetBuildVersion(): string
     {
-        $buildVersion = $this->assetBuildVersion = $this->config['allow_assets_version'] ? '?v=' . $this->config['assets_version'] : '';
-        
+        $buildVersion = $this->assetBuildVersion = $this->config['allow_assets_version'] ? '?v='.$this->config['assets_version'] : '';
+
         return $buildVersion;
     }
 
     /**
      * Add assets script
      */
-
     public function addScript(array|string $assets): static
     {
         $assets = array_filter($assets);
@@ -49,7 +53,6 @@ class AssetSupport
     /**
      * Add assets style
      */
-
     public function addStyle(array|string $assets): static
     {
         $assets = array_filter($assets);
