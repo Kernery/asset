@@ -132,6 +132,7 @@ class AssetSupport
     {
         $type = 'style';
         $html = '';
+
         if (! in_array($type, ['style', 'script'])) {
             return $html;
         }
@@ -252,6 +253,7 @@ class AssetSupport
 
         foreach ((array) $assets as $rem) {
             $index = array_search($rem, $this->scripts);
+
             if ($index === false) {
                 continue;
             }
@@ -270,6 +272,7 @@ class AssetSupport
 
         foreach ((array) $assets as $rem) {
             $index = array_search($rem, $this->styles);
+
             if ($index === false) {
                 continue;
             }

@@ -11,7 +11,7 @@ class AssetServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->setNamespace('core/asset')
+        $this->setNamespace('modules/asset')
             ->loadAndPublishConfigs('global')
             ->loadHelpers();
     }
